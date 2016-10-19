@@ -3,7 +3,6 @@
  * Don't change manually
  */
 
-import { Promise } from "es6-promise"
 import webapi from "./webapi"
 {{- range .Includes }}
 import * as {{ . }} from "./{{ . }}Service"
@@ -28,7 +27,7 @@ export interface {{ .Name }} {
 {{ $root := . -}}
 {{ range .Methods }}
 export function {{ .Name }}({{ .Arguments | $root.AssembleParamsValType}}): Promise<{{ .ReturnType }}> {
-    return webapi<{{ .ReturnType }}>('{{ .ServiceName }}.{{ .Name }}', { {{ .Arguments | $root.AssembleParamsVal }} })
+    return webapi<{{ .ReturnType }}>("{{ .ServiceName }}.{{ .Name }}", { {{ .Arguments | $root.AssembleParamsVal }} })
 }
 {{ end }}
 
