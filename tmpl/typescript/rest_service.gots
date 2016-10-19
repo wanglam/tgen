@@ -3,7 +3,7 @@
  * Don't change manually
  */
 
-import webapi from "./webapi"
+import webapi from "./webapi";
 {{- range .Includes }}
 import * as {{ . }} from "./{{ . }}Service"
 {{- end }}
